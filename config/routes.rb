@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources "users"
 
   get("/login", { :controller => "sessions", :action => "new" })
+  post("/login", { :controller => "sessions", :action => "create" })
   get("/logout", { :controller => "sessions", :action => "destroy" })
 
   get("/", { :controller => "places", :action => "index" })
