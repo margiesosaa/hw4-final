@@ -1,25 +1,29 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Tacostagram Final</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Travel Journal</title>
+</head>
+<body>
+  <div>
+    <a href="/">Home</a>
+    <% @user = User.find_by({ "id" => session["user_id"] }) %>
+    <% if @user == nil %>
+      <span style="float:right">
+        <a href="/login">Login</a> | <a href="/users/new">Signup</a>
+      </span>
+    <% else %>
+      <span style="float:right">
+        Logged in as: <%= @user["username"] %> <a href="/logout">Logout</a>
+      </span>
+    <% end %>
+  </div>
 
-    <link rel="stylesheet" href="/stylesheets/application.css">
-  </head>
+  <% if flash["notice"] != nil %>
+    <p><%= flash["notice"] %></p>
+  <% end %>
 
-  <body>
-    <div>
-      <%= flash["notice"] %>
-    </div>
-    <div>
-      <a href="/">Home</a>
-      <a href="/logout">Logout</a>
-      <a href="/login">Login</a>
-      <a href="/users/new">Signup</a>
-    </div>
-
-    <%= yield %>
-  </body>
+  <%= yield %>
+</body>
 </html>
