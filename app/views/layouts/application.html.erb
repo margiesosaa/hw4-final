@@ -23,20 +23,17 @@
           <li class="nav-item">
             <a class="nav-link" aria-current="page" href="/">Home</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/places">Places</a>
-          </li>
         </ul>
 
         <ul class="navbar-nav mb-2 mb-lg-0">
           <% @user = User.find_by({ "id" => session["user_id"] }) %>
-          <% if @user == nil %>
-            <li class="nav-item">
-              <a href="/users/new" class="btn btn-outline-dark me-2">Sign Up</a>
-            </li>
-            <li class="nav-item">
-              <a href="/login" class="btn btn-dark">Login</a>
-            </li>
+<% if @user == nil %>
+  <li class="nav-item">
+    <a href="/login" class="nav-link">Login</a>
+  </li>
+  <li class="nav-item">
+    <a href="/users/new" class="nav-link">Sign Up</a>
+  </li>
           <% else %>
             <li class="navbar-text">
               Logged in as: <%= @user["username"] %>

@@ -1,4 +1,4 @@
-<h1>New Entry</h1>
+<h1>New Post</h1>
 <% if @current_user != nil %>
   <form action="/entries" method="post" enctype="multipart/form-data">
     <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
@@ -23,5 +23,5 @@
     <a href="/places/<%= params["place_id"] %>" class="btn btn-secondary">Cancel</a>
   </form>
 <% else %>
-  You must first <a href="/login">login</a> to create an entry.
+  You must first <a href="/login">login</a> to create a post.
 <% end %>
